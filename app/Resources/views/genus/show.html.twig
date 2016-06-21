@@ -14,7 +14,7 @@
                 <dt>Known Species:</dt>
                 <dd>{{ genus.speciesCount|number_format }}</dd>
                 <dt>Fun Fact:</dt>
-                <dd>{{ funFact|raw }}</dd>
+                <dd>{{ genus.funFact|markdownify }}</dd>
                 <dt>Recent notes:</dt>
                 <dd>{{ recentNoteCount }}</dd>
             </dl>
