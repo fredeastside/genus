@@ -41,7 +41,8 @@ class Genus
     }
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SubFamily")
      */
     private $subFamily;
 
@@ -59,6 +60,27 @@ class Genus
      * @ORM\Column(type="boolean")
      */
     private $isPublished = true;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $firstDiscoveredAt;
+
+    /**
+     * @return mixed
+     */
+    public function getFirstDiscoveredAt()
+    {
+        return $this->firstDiscoveredAt;
+    }
+
+    /**
+     * @param mixed $firstDiscoveredAt
+     */
+    public function setFirstDiscoveredAt($firstDiscoveredAt)
+    {
+        $this->firstDiscoveredAt = $firstDiscoveredAt;
+    }
 
     /**
      * @param mixed $isPublished
@@ -85,7 +107,7 @@ class Genus
     }
 
     /**
-     * @return mixed
+     * @return SubFamily
      */
     public function getSubFamily()
     {
@@ -95,7 +117,7 @@ class Genus
     /**
      * @param mixed $subFamily
      */
-    public function setSubFamily($subFamily)
+    public function setSubFamily(SubFamily $subFamily)
     {
         $this->subFamily = $subFamily;
     }
