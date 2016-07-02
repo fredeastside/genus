@@ -11,13 +11,18 @@ class GenusFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('name')
+            ->add('subFamily')
             ->add('speciesCount')
-            ->add('funFact');
+            ->add('funFact')
+            ->add('isPublished')
+            ->add('firstDiscoveredAt');
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
-
+        $resolver->setDefaults([
+           'data_class' => 'AppBundle\Entity\Genus'
+        ]);
     }
 
     public function getName()
