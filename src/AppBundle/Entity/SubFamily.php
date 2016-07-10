@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class SubFamily
  * @package AppBundle\Entity
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\SubFamilyRepository")
  * @ORM\Table(name="sub_family")
  */
 class SubFamily

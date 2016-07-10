@@ -10,6 +10,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\GenusRepository")
@@ -26,6 +27,7 @@ class Genus
     
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     private $name;
 
@@ -43,11 +45,14 @@ class Genus
     /**
      * @ORM\JoinColumn(nullable=false)
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SubFamily")
+     * @Assert\NotBlank()
      */
     private $subFamily;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
+     * @Assert\Range(min="0", minMessage="Only positive numbers!")
      */
     private $speciesCount;
 
@@ -63,8 +68,17 @@ class Genus
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank()
      */
     private $firstDiscoveredAt;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 
     /**
      * @return mixed
@@ -151,7 +165,7 @@ class Genus
      */
     public function getFunFact()
     {
-        return '**TEST** '.$this->funFact;
+        return $this->funFact;
     }
 
     /**
