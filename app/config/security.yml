@@ -4,6 +4,9 @@ security:
     encoders:
         AppBundle\Entity\User: bcrypt
 
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_MANAGE_GENUS, ROLE_ALLOWED_TO_SWITCH]
+
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         our_users:
@@ -23,6 +26,8 @@ security:
 
             logout:
                 path: /logout
+
+            switch_user: ~
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -30,3 +35,6 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+    access_control:
+        #- { path: ^/admin, roles: ROLE_ADMIN }

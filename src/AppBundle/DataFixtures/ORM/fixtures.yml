@@ -24,3 +24,4 @@ AppBundle\Entity\User:
     user_{1..10}:
         email: fredrsf+<current()>@gmail.com
         plainPassword: iliketurtles
+        roles: ['ROLE_ADMIN']
