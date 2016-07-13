@@ -41,7 +41,7 @@ class UserController extends Controller
                     $user,
                     $request,
                     $this->get('app.security.login_form_authenticator'),
-                    
+                    'main'
                 );
         }
 
